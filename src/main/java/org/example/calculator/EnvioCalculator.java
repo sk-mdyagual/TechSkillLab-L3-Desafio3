@@ -1,20 +1,16 @@
 package org.example.calculator;
 
 public class EnvioCalculator {
-    public double calcularEnvio(double peso, String zona){
+    private final EnvioEstrategia estrategia;
+
+    public EnvioCalculator(EnvioEstrategia estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    public double calcularEnvio(double peso) {
         if (peso <= 0) {
-            return 0;
+            throw new IllegalArgumentException("El peso debe ser mayor a 0");
         }
-        if (zona == null || zona.isEmpty()) {
-            return 0;
-
-        }
-
-        return switch (zona) {
-            case "local" -> peso * 1.5;
-            case "nacional" -> peso * 2.0;
-            case "internacional" -> peso * 3.0;
-            default -> throw new IllegalArgumentException("Zona no válida");
-        };
+        return estrategia.calcular(peso);
     }
 }
