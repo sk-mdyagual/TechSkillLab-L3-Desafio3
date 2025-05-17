@@ -36,13 +36,13 @@ class ZonaDeEnvioTest {
     @Test
     void zonaInternacional_PesoDecimal() {
         ZonaDeEnvio zona = new Internacional();
-        assertEquals(6.6, zona.calcularCosto(2.2), 0.01); // tolerancia por decimales
+        assertEquals(6.6, zona.calcularCosto(2.2), 0.01);
     }
 
     @Test
     void zonaNacional_PesoNegativo() {
         ZonaDeEnvio zona = new Nacional();
         double resultado = zona.calcularCosto(-5.0);
-        assertEquals(-10.0, resultado); // la clase no valida el peso, solo multiplica
+        assertEquals(-10.0, resultado);
     }
 }
