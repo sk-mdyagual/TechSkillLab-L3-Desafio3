@@ -59,6 +59,19 @@ class EnvioCalculatorRefacTest {
     }
 
     @Test
+    void calcularEnvio_totalPagarEnvioLocalPesoNegativo() {
+
+        peso = -1.0;
+
+        Mockito.when(impEstrategiaMock.calcular(peso)).thenReturn(1.5);
+
+        double total = envioCalculatorRefac.calcularEnvio(peso);
+
+        assertEquals(0, total);
+
+    }
+
+    @Test
     void calcularEnvio_totalPagarEnvioLocalExtrategia() {
 
         impEstrategiaMock = new EnvioInternacional();
@@ -68,6 +81,21 @@ class EnvioCalculatorRefacTest {
         double total = envioCalculatorRefac.calcularEnvio2(peso);
 
         assertEquals(30.0, total);
+
+    }
+
+    @Test
+    void calcularEnvio_totalPagarEnvioLocalExtrategiaPesoNegativo() {
+
+        peso = -1.0;
+
+        impEstrategiaMock = new EnvioInternacional();
+
+        envioCalculatorRefac = new EnvioCalculatorRefac(impEstrategiaMock);
+
+        double total = envioCalculatorRefac.calcularEnvio2(peso);
+
+        assertEquals(0, total);
 
     }
 

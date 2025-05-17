@@ -25,12 +25,7 @@ public class EnvioCalculatorRefac {
             throw new IllegalArgumentException("Estrategia de envío no válida");
         }
 
-        double total =  estrategia.calcular(peso);
+        return  estrategia.calcular(peso);
 
-        if (total <= 0) {
-            return 0;
-        }
-
-        return total;
     }
 }
