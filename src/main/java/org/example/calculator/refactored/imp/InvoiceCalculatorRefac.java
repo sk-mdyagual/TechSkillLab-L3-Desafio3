@@ -1,4 +1,4 @@
-package org.example.calculator.refactored;
+package org.example.calculator.refactored.imp;
 
 public class InvoiceCalculatorRefac {
     private final ImpEstrategia impuesto;
@@ -8,9 +8,6 @@ public class InvoiceCalculatorRefac {
     }
 
     public double calcularTotal(double amount) {
-        if (amount <= 0) {
-            return 0;
-        }
         return amount + impuesto.calcular(amount);
     }
 
